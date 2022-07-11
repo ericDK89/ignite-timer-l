@@ -23,6 +23,9 @@
         "import/no-unresolved": ["off"],
         "import/extensions": ["off"],
         "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-        "react/react-in-jsx-scope": ["off"]
+        "react/react-in-jsx-scope": ["off"],
+        "no-undef": ["off"],
+        "jsx-a11y/label-has-associated-control": ["off"],
+        "jsx-a11y/control-has-associated-label": ["off"]
     }
 }
