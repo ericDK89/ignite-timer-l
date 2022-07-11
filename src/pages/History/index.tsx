@@ -21,19 +21,31 @@ function History() {
               <td>Tarefa</td>
               <td>20 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Concluído</td>
+              <td>
+                <HistoryStyles.Status statusColor="done">
+                  Concluído
+                </HistoryStyles.Status>
+              </td>
             </tr>
             <tr>
               <td>Tarefa</td>
               <td>20 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Em andamento</td>
+              <td>
+                <HistoryStyles.Status statusColor="progress">
+                  Em andamento
+                </HistoryStyles.Status>
+              </td>
             </tr>
             <tr>
               <td>Tarefa</td>
               <td>20 minutos</td>
               <td>Há cerca de 2 meses</td>
-              <td>Interrompido</td>
+              <td>
+                <HistoryStyles.Status statusColor="interrupted">
+                  Interrompido
+                </HistoryStyles.Status>
+              </td>
             </tr>
           </tbody>
         </table>

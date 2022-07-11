@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+const STATUS_COLOR = {
+  done: 'green-500',
+  progress: 'yellow-500',
+  interrupted: 'red-500',
+} as const;
+
+interface StatusProps {
+  statusColor: keyof typeof STATUS_COLOR
+}
+
 const HistoryStyles = {
 
   Container: styled.main`
@@ -67,6 +77,25 @@ const HistoryStyles = {
       }
     }
 
+  }
+  `,
+
+  Status: styled.span<StatusProps>`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  line-height: 0;
+
+  &::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 9999px;
+
+    background-color: ${(props) => props.theme[STATUS_COLOR[props.statusColor]]};
   }
   `,
 };
