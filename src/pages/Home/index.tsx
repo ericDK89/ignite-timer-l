@@ -1,9 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { HandPalm, Play } from 'phosphor-react';
-import { useContext } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as zod from 'zod';
-import { CyclesContext } from '../../contexts/CyclesContext';
+import useCycle from '../../hooks/useCycle';
 import Countdown from './components/Countdown';
 import NewCycleForm from './components/NewCycleForm';
 import HomeStyles from './styles';
@@ -16,7 +15,7 @@ const FormValidationSchema = zod.object({
 type FormData = zod.infer<typeof FormValidationSchema>
 
 function Home() {
-  const { createNewCycle, activeCycle, interruptCurrentCycle } = useContext(CyclesContext);
+  const { createNewCycle, activeCycle, interruptCurrentCycle } = useCycle();
 
   const form = useForm<FormData>({
     resolver: zodResolver(FormValidationSchema),
@@ -26,13 +25,18 @@ function Home() {
     },
   });
 
+  function handleCreateNewCycle(data: FormData) {
+    createNewCycle(data);
+    form.reset();
+  }
+
   const task: string = form.watch('task');
   const isSubmitDisabled = task?.trim().length <= 0;
 
   return (
     <HomeStyles.Container>
 
-      <form onSubmit={form.handleSubmit(createNewCycle)}>
+      <form onSubmit={form.handleSubmit(handleCreateNewCycle)}>
         <FormProvider {...form}>
           <NewCycleForm />
         </FormProvider>
